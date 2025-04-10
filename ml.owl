@@ -1,0 +1,62 @@
+<?xml version="1.0"?> 
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+         xmlns:ml="http://example.org/ml#"> 
+
+    <!-- Ontology header --> 
+    <owl:Ontology rdf:about="http://example.org/ml"/> 
+
+    <!-- Define classes --> 
+    <owl:Class rdf:about="http://example.org/ml#TrainingData"> 
+        <rdfs:label>TrainingData</rdfs:label> 
+        <rdfs:comment>The data used to train a machine learning model</rdfs:comment> 
+    </owl:Class> 
+
+    <owl:Class rdf:about="http://example.org/ml#ModelParameters"> 
+        <rdfs:label>ModelParameters</rdfs:label> 
+        <rdfs:comment>Parameters used in machine learning models for prediction</rdfs:comment> 
+    </owl:Class> 
+
+    <owl:Class rdf:about="http://example.org/ml#TrainingAlgorithm"> 
+        <rdfs:label>TrainingAlgorithm</rdfs:label> 
+        <rdfs:comment>The algorithm used to train a model using training data</rdfs:comment> 
+    </owl:Class> 
+
+    <owl:Class rdf:about="http://example.org/ml#Hyperparameters"> 
+        <rdfs:label>Hyperparameters</rdfs:label> 
+        <rdfs:comment>External configuration variables that influence the model's training process</rdfs:comment> 
+    </owl:Class> 
+
+    <!-- Define object properties --> 
+    <owl:ObjectProperty rdf:about="http://example.org/ml#trainedBy"> 
+        <rdfs:label>trainedBy</rdfs:label> 
+        <rdfs:domain rdf:resource="http://example.org/ml#TrainingData"/> 
+        <rdfs:range rdf:resource="http://example.org/ml#TrainingAlgorithm"/> 
+        <rdfs:comment>Indicates that training data is used by a training algorithm to train a model</rdfs:comment> 
+    </owl:ObjectProperty> 
+
+    <owl:ObjectProperty rdf:about="http://example.org/ml#hasParameter"> 
+        <rdfs:label>hasParameter</rdfs:label> 
+        <rdfs:domain rdf:resource="http://example.org/ml#ModelParameters"/> 
+        <rdfs:range rdf:resource="http://example.org/ml#Hyperparameters"/> 
+        <rdfs:comment>Indicates that model parameters have associated hyperparameters</rdfs:comment> 
+    </owl:ObjectProperty> 
+
+    <!-- Define data properties --> 
+    <owl:DatatypeProperty rdf:about="http://example.org/ml#learningRate"> 
+        <rdfs:label>learningRate</rdfs:label> 
+        <rdfs:domain rdf:resource="http://example.org/ml#Hyperparameters"/> 
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/> 
+        <rdfs:comment>The learning rate used in the training process</rdfs:comment> 
+    </owl:DatatypeProperty> 
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ml#batchSize"> 
+        <rdfs:label>batchSize</rdfs:label> 
+        <rdfs:domain rdf:resource="http://example.org/ml#Hyperparameters"/> 
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/> 
+        <rdfs:comment>The size of the batches used in the training process</rdfs:comment> 
+    </owl:DatatypeProperty> 
+
+</rdf:RDF>
